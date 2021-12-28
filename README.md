@@ -1,9 +1,9 @@
 # Decopop
 #### Decopop - SDK
 + Firebase
-  Auth
-  Messaging
-  Analytics
+  ,Auth
+  ,Messaging
+  ,Analytics
 + Kakao
   Auth
 
