@@ -4,7 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Phantom/01.Scene/Login.unity
+    guid: 03f0685fc67bebe41a4eb0651a23433e
+  - enabled: 1
+    path: Assets/Phantom/01.Scene/Main.unity
+    guid: 3883edcdceeaaa84384343ae60e92a2f
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4ccab4b3ca5a4df4e93a7e5526f9e0e0, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: f4f80026375ff1d4da14d5ad6ad3130c, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6bfd409e4444e064ab6c968c97caee1c, type: 2}

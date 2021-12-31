@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id">
+  <string name="gcm_defaultSenderId" translatable="false">343403672780</string>
+  <string name="google_storage_bucket" translatable="false">decopop-61382.appspot.com</string>
+  <string name="project_id" translatable="false">decopop-61382</string>
+  <string name="google_api_key" translatable="false">AIzaSyCU29pqJWa0gCBI6sA2Okp4s452SMrcpFA</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCU29pqJWa0gCBI6sA2Okp4s452SMrcpFA</string>
+  <string name="google_app_id" translatable="false">1:343403672780:android:9c616c1735f9e2f3a5fe69</string>
+  <string name="default_android_client_id" translatable="false">343403672780-qqqmp1pramm0c57q2b4rhq12ok8sj4uk.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">343403672780-42jtgljl7tb426k0smt6c74jkvulinkc.apps.googleusercontent.com</string>
+</resources>

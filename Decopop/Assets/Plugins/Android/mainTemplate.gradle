@@ -21,6 +21,7 @@ apply plugin: 'com.android.library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation "com.kakao.sdk:v2-user:2.6.0" // 카카오 로그인
 // Android Resolver Dependencies Start
     implementation 'com.google.android.gms:play-services-base:17.6.0' // Assets/Firebase/Editor/AppDependencies.xml:17
     implementation 'com.google.firebase:firebase-analytics:20.0.0' // Assets/Firebase/Editor/MessagingDependencies.xml:15
