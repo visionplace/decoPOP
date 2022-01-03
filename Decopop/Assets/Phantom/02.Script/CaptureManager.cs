@@ -57,6 +57,7 @@ public class CaptureManager : MonoBehaviour
     IEnumerator Action()
     {
         captureCanvas.enabled = true;
+        waterMark.gameObject.SetActive(true);
         uiCanvas.enabled = false;
         
         if(apiCanvas.enabled == true)
@@ -71,8 +72,6 @@ public class CaptureManager : MonoBehaviour
             pictureEnable = true;
         }
 
-        waterMark.gameObject.SetActive(true);
-
         yield return new WaitForEndOfFrame();
 
         texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
@@ -81,8 +80,9 @@ public class CaptureManager : MonoBehaviour
         texture.Apply();
 
         waterMark.gameObject.SetActive(false);
+        uiCanvas.enabled = true;
 
-        if(apiEnable == true)
+        if (apiEnable == true)
         {
             apiCanvas.enabled = true;
             apiEnable = false;
@@ -95,7 +95,6 @@ public class CaptureManager : MonoBehaviour
         }
 
         NativeGallery.SaveImageToGallery(texture.EncodeToPNG(), "°£ÆÇAR", texture.name);
-
         PreviewEvent();
     }
 

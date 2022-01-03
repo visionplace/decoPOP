@@ -7,20 +7,74 @@ using UnityEngine.Networking;
 
 public class ARManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject loding;
+    [SerializeField]
+    private GameObject popup;
+    [SerializeField]
+    private GameObject joyStick;
+
     private string targetCode = "";
-    private GameObject target;
     private string targetDimension;
+    private GameObject target;    
+    private int targetNumber = 0;
+    private bool targetEnable = false;
 
     private GameObject wallPaper;
+
+    void Awake()
+    {
+        if(loding.activeSelf == true)
+        {
+            loding.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if(targetEnable == true)
+        {
+            switch(targetNumber)
+            {
+                case 1:
+                    target.transform.eulerAngles += new Vector3(0, -1f, 0);                    
+                    break;
+                case 2:
+                    target.transform.eulerAngles += new Vector3(-1f, 0, 0);
+                    break;
+                case 3:
+                    target.transform.eulerAngles += new Vector3(0, 1f, 0);                    
+                    break;
+                case 4:
+                    target.transform.eulerAngles += new Vector3(1f, 0, 0);
+                    break;
+            }
+        }
+    }
 
     public void TargetEvent(string code, string dimension, string address)
     {
         if(targetCode == code)
         {
+            if(target != null)
+            {
+                TargetResetEvent();
+            }
+
             return;
         }
 
         targetCode = code;
+
+        if(popup.activeSelf == true)
+        {
+            popup.SetActive(false);
+        }
+
+        if(joyStick.activeSelf == false)
+        {
+            joyStick.SetActive(true);
+        }
 
         if(dimension == "2D")
         {
@@ -34,6 +88,11 @@ public class ARManager : MonoBehaviour
 
     private async UniTask TwoDimensionTargetEvent(string url)
     {
+        if(loding.activeSelf == false)
+        {
+            loding.SetActive(true);
+        }        
+
         if(targetDimension == "3D")
         {
             DestroyImmediate(target);
@@ -45,7 +104,7 @@ public class ARManager : MonoBehaviour
             target.tag = "Target";
             targetDimension = "2D";
             target.AddComponent<SpriteRenderer>();
-            target.AddComponent<BoxCollider2D>();
+            target.AddComponent<BoxCollider>();
             target.AddComponent<LeanSelectableByFinger>();
             target.AddComponent<LeanDragTranslate>();
             target.AddComponent<LeanPinchScale>();
@@ -66,10 +125,15 @@ public class ARManager : MonoBehaviour
                 }
 
                 target.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-                target.GetComponent<BoxCollider2D>().size = new Vector2(texture.width * 0.01f, texture.height * 0.01f);               
+                target.GetComponent<BoxCollider>().size = new Vector3(texture.width * 0.01f, texture.height * 0.01f, 0.1f);               
             }
             finally
             {
+                if (loding.activeSelf == true)
+                {
+                    loding.SetActive(false);
+                }
+
                 TargetResetEvent();
             }
         }
@@ -82,7 +146,7 @@ public class ARManager : MonoBehaviour
 
     //}
 
-    private void TargetResetEvent()
+    public void TargetResetEvent()
     {
         if(target != null)
         {
@@ -94,12 +158,22 @@ public class ARManager : MonoBehaviour
 
     public void WallPaperEvent()
     {
-        if(wallPaper == null)
+        if (loding.activeSelf == false)
+        {
+            loding.SetActive(true);
+        }
+
+        if (popup.activeSelf == true)
+        {
+            popup.SetActive(false);
+        }
+
+        if (wallPaper == null)
         {
             wallPaper = new GameObject();
             wallPaper.tag = "WallPaper";
             wallPaper.AddComponent<SpriteRenderer>();
-            wallPaper.AddComponent<BoxCollider2D>();
+            wallPaper.AddComponent<BoxCollider>();
             wallPaper.AddComponent<LeanSelectableByFinger>();
             wallPaper.AddComponent<LeanDragTranslate>();
             wallPaper.AddComponent<LeanPinchScale>();
@@ -121,13 +195,18 @@ public class ARManager : MonoBehaviour
                 }
 
                 wallPaper.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-                wallPaper.GetComponent<BoxCollider2D>().size = new Vector2(texture.width * 0.01f, texture.height * 0.01f);
-                wallPaper.transform.position = Camera.main.transform.position + (Camera.main.transform.forward * 1) + (Vector3.up * 0.18f);
+                wallPaper.GetComponent<BoxCollider>().size = new Vector3(texture.width * 0.01f, texture.height * 0.01f, 0.1f);
+                wallPaper.transform.position = Camera.main.transform.position + (Camera.main.transform.forward * 10) + (Vector3.up * 0.18f);
                 wallPaper.transform.rotation = Camera.main.transform.rotation;
-                wallPaper.transform.localScale = new Vector3(0.025f, 0.025f, 1);
+                wallPaper.transform.localScale = new Vector3(0.25f, 0.25f, 1);
             }
 
         });
+
+        if (loding.activeSelf == true)
+        {
+            loding.SetActive(false);
+        }
     }
 
     private Texture2D ImageResettingEvent(Texture2D texture)
@@ -158,5 +237,25 @@ public class ARManager : MonoBehaviour
         result.SetPixels(rpixels, 0);
         result.Apply();
         return result;
+    }
+
+
+
+    public void PlayTargetEvent(int number)
+    {
+        if(target != null)
+        {
+            targetNumber = number;
+            targetEnable = true;
+        }
+    }
+
+    public void StopTargetEvent()
+    {
+        if(target != null)
+        {
+            targetNumber = 0;
+            targetEnable = false;
+        }        
     }
 }

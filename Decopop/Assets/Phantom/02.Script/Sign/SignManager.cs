@@ -43,7 +43,8 @@ public class SignManager : MonoBehaviour
     private User user = new User();
     private Firebase.FirebaseApp app = null;
 
-    public Text debug;
+    [SerializeField]
+    private GameObject loding;
 
     void Awake()
     {
@@ -143,6 +144,8 @@ public class SignManager : MonoBehaviour
 
     private void SignEvent()
     {
+        loding.SetActive(true);
+
         StringBuilder sign = new StringBuilder();
         sign.Append("http://decopop.ganpandirect.com/login/sns_process.php?");
         sign.Append("action=login&from=1&sns_section=5");
@@ -170,8 +173,6 @@ public class SignManager : MonoBehaviour
                 Result result = JsonConvert.DeserializeObject<Result>(request.downloadHandler.text);
 
                 string member = result.user.member_code;
-                debug.text += member + "\n";
-                debug.text += result.user.member_status + "\n";
 
                 if (result.user.member_status.Equals("OK"))
                 {
@@ -181,6 +182,10 @@ public class SignManager : MonoBehaviour
             catch
             {
                 SceneManager.LoadScene("Main");
+            }
+            finally
+            {
+                loding.SetActive(false);
             }
 
         }));

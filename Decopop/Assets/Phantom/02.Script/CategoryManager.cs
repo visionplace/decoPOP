@@ -142,6 +142,7 @@ public class CategoryManager : MonoBehaviour
         }
         finally
         {
+            await UniTask.Delay(800);
             loding.SetActive(false);
         }
     }
