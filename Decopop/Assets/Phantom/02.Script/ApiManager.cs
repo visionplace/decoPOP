@@ -186,6 +186,7 @@ public class ApiManager : MonoBehaviour
 
             CategoryUIEvent(index);
             ApiEvent(2, value.code);
+            LogEvent(value.code).Forget();
 
         });
     }
@@ -300,6 +301,7 @@ public class ApiManager : MonoBehaviour
             manager.TargetEvent(value.code, value.dimension, value.ar);
             fristText.text = value.name;
             secondText.text = value.content;
+            LogEvent(value.code).Forget();
 
         });
 
@@ -340,5 +342,23 @@ public class ApiManager : MonoBehaviour
     public void OpenUrlEvent()
     {
         Application.OpenURL(currentUrl);
+    }
+
+    private async UniTask LogEvent(string code)
+    {
+        string member = PlayerPrefs.GetString("Member");
+        string log = $"http://decopop.ganpandirect.com/log/use_log.php?m=input&m_code={member}&b={code}";
+
+        using (UnityWebRequest request = UnityWebRequest.Get(log))
+        {
+            try
+            {
+                await request.SendWebRequest();
+            }
+            catch
+            {
+                return;
+            }
+        }
     }
 }

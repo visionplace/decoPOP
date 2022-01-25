@@ -175,7 +175,8 @@ public class CategoryManager : MonoBehaviour
         {
 
             CanvasEvent(1);
-            apiManager.ApiEvent(1, value.code);            
+            apiManager.ApiEvent(1, value.code);
+            LogEvent(value.code).Forget();
 
         });
         ce.text.text = value.name;
@@ -276,6 +277,24 @@ public class CategoryManager : MonoBehaviour
                 AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity, message, 3);
                 toastObject.Call("show");
             }));
+        }
+    }
+
+    private async UniTask LogEvent(string code)
+    {
+        string member = PlayerPrefs.GetString("Member");
+        string log = $"http://decopop.ganpandirect.com/log/use_log.php?m=input&m_code={member}&b={code}";
+
+        using (UnityWebRequest request = UnityWebRequest.Get(log))
+        {
+            try
+            {
+                await request.SendWebRequest();
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }
