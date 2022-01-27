@@ -207,7 +207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 230534867}
         m_TargetAssemblyTypeName: SignManager, Assembly-CSharp
-        m_MethodName: KakaoSignEvent
+        m_MethodName: AppleSignInEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
