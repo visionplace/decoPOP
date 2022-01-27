@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
 
     public void CloseCanvasEvent()
     {
-        animationUI.DOSizeDelta(new Vector2(1440f, 100f), 0.3f, false).OnStart(() => 
+        animationUI.DOSizeDelta(new Vector2(0, 100f), 0.3f, false).OnStart(() => 
         {
 
             if (apiCanvas.enabled == true)
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenCanvasEvent()
     {
-        animationUI.DOSizeDelta(new Vector2(1440f, 900f), 0.3f, false).OnComplete(() =>
+        animationUI.DOSizeDelta(new Vector2(0, 900f), 0.3f, false).OnComplete(() =>
         {
 
             if (apiEnable == true)
