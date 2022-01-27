@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>343403672780-prvbksrm3g36av26c5fqr14pt9bidg74.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.343403672780-prvbksrm3g36av26c5fqr14pt9bidg74</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>343403672780-qqqmp1pramm0c57q2b4rhq12ok8sj4uk.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAIxzvGR5CKbmX5OPueR0VdNGxUIabSJbg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>343403672780</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.visionplace.decopop</string>
+	<key>PROJECT_ID</key>
+	<string>decopop-61382</string>
+	<key>STORAGE_BUCKET</key>
+	<string>decopop-61382.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:343403672780:ios:d52cf9524435279da5fe69</string>
+</dict>
+</plist>
