@@ -110,9 +110,8 @@ public class SignManager : MonoBehaviour
 
     private void KakaoError(string error)
     {
-        string message = "로그인 중 에러가 발생하였습니다.";
-
 #if UNITY_ANDROID
+        string message = "로그인 중 에러가 발생하였습니다.";
         AndroidToastPopupEvent(message);
 #endif
 
