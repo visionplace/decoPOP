@@ -41,12 +41,16 @@ public class CaptureManager : MonoBehaviour
 
     public void GalleryEvent()
     {
+#if UNITY_ANDROID
         var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         var activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
         var intent = new AndroidJavaObject("android.content.Intent", "android.intent.action.MAIN");
         intent.Call<AndroidJavaObject>("addCategory", "android.intent.category.LAUNCHER");
         intent.Call<AndroidJavaObject>("addCategory", "android.intent.category.APP_GALLERY");
         activity.Call("startActivity", intent);
+#elif UNITY_IOS
+        Application.OpenURL("photos-redirect://");
+#endif
     }
 
     public void CaptureEvent()
@@ -94,7 +98,7 @@ public class CaptureManager : MonoBehaviour
             apiEnable = false;
         }
 
-        NativeGallery.SaveImageToGallery(texture.EncodeToPNG(), "∞£∆«AR", texture.name);
+        NativeGallery.SaveImageToGallery(texture.EncodeToPNG(), "Í∞ÑÌåêAR", texture.name);
         PreviewEvent();
     }
 
