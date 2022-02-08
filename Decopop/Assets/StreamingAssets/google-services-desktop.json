@@ -7,38 +7,27 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:343403672780:android:9c616c1735f9e2f3a5fe69",
+        "mobilesdk_app_id": "1:343403672780:ios:d52cf9524435279da5fe69",
         "android_client_info": {
           "package_name": "com.visionplace.decopop"
         }
       },
       "oauth_client": [
         {
-          "client_id": "343403672780-qqqmp1pramm0c57q2b4rhq12ok8sj4uk.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.visionplace.decopop",
-            "certificate_hash": "02251063f3b855ae39d659f9426abe29b8ebe127"
-          }
-        },
-        {
-          "client_id": "343403672780-42jtgljl7tb426k0smt6c74jkvulinkc.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "343403672780-prvbksrm3g36av26c5fqr14pt9bidg74.apps.googleusercontent.com"
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCU29pqJWa0gCBI6sA2Okp4s452SMrcpFA"
+          "current_key": "AIzaSyAIxzvGR5CKbmX5OPueR0VdNGxUIabSJbg"
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 0
+        },
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "343403672780-42jtgljl7tb426k0smt6c74jkvulinkc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1
         }
       }
     }
