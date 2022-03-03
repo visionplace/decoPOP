@@ -309,6 +309,11 @@ public class SignManager : MonoBehaviour
         }));
     }
 
+    public void SkipEvent()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
     private IEnumerator LogEvent(string log)
     {
         string member = PlayerPrefs.GetString("Member");
