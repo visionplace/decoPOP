@@ -12,7 +12,6 @@ extern "C" {
                 }
                 else {
                     NSLog(@"login succeeded.");
-                    UnitySendMessage("iOSPluginCallBacks", [callback UTF8String], "");
                 }
 
             }authType:(KOAuthType)KOAuthTypeTalk, nil];

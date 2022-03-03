@@ -13,6 +13,7 @@ using AppleAuth.Interfaces;
 using AppleAuth.Native;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
+using UnityEngine.UI;
 
 [Serializable]
 public struct User
@@ -53,6 +54,8 @@ public class SignManager : MonoBehaviour
 
     [SerializeField]
     private GameObject loding;
+    [SerializeField]
+    private Text debug;
 
     void Start()
     {
@@ -251,6 +254,11 @@ public class SignManager : MonoBehaviour
 
     private void SignEvent()
     {
+        debug.text += user.name + "\n";
+        debug.text += user.sns + "\n";
+        debug.text += user.email + "\n";
+        debug.text += user.id + "\n";
+
         if(loding != null)
         {
             if(loding.activeSelf == false)
