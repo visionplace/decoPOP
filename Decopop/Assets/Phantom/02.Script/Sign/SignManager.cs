@@ -12,6 +12,7 @@ using AppleAuth.Extensions;
 using AppleAuth.Interfaces;
 using AppleAuth.Native;
 using System.Security.Cryptography;
+using System.Runtime.InteropServices;
 
 [Serializable]
 public struct User
@@ -46,6 +47,9 @@ public class SignManager : MonoBehaviour
 {
     private User user = new User();
     private IAppleAuthManager appleAuthManager;
+
+    [DllImport("__Internal")]
+    static extern void _KakaoSignIn();
 
     [SerializeField]
     private GameObject loding;
@@ -105,13 +109,15 @@ public class SignManager : MonoBehaviour
 #if UNITY_ANDROID
         AndroidJavaObject plugin = new AndroidJavaObject("com.unity3d.player.KakaoAuth");
             plugin.Call("KakaoSignIn");
+#elif UNITY_IOS
+        _KakaoSignIn();
 #endif
     }
 
     private void KakaoError(string error)
     {
 #if UNITY_ANDROID
-        string message = "·Î±×ÀÎ Áß ¿¡·¯°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.";
+        string message = "ë¡œê·¸ì¸ ì¤‘ ì—ëŸ¬ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.";
         AndroidToastPopupEvent(message);
 #endif
 
