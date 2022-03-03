@@ -9,7 +9,7 @@ using System.Linq;
 
 public static class KakaoPostprocess
 {
-    const string KAKAO_APP_KEY = "048d87d3daf4310af05f2932769ca807";
+    const string KAKAO_APP_KEY = "5ed4dbecdbd90ffb0edc16fe8fe79381";
     const string KAKAO_URL_SCHEME = "kakao" + KAKAO_APP_KEY;
 
     static string ProjectPath = string.Empty;
