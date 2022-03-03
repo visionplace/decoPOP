@@ -54,8 +54,6 @@ public class SignManager : MonoBehaviour
 
     [SerializeField]
     private GameObject loding;
-    [SerializeField]
-    private Text debug;
 
     void Start()
     {
@@ -254,10 +252,10 @@ public class SignManager : MonoBehaviour
 
     private void SignEvent()
     {
-        debug.text += user.name + "\n";
-        debug.text += user.sns + "\n";
-        debug.text += user.email + "\n";
-        debug.text += user.id + "\n";
+        if(String.IsNullOrEmpty(user.token))
+        {
+            user.token = user.name;
+        }
 
         if(loding != null)
         {
