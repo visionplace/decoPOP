@@ -24,6 +24,7 @@ public class PictureManager : MonoBehaviour
         PictureEvent();
     }
 
+    // 내사진가져오기
     private void PictureEvent()
     {
         string directoryPath = Application.persistentDataPath + "/" + "MyGallery";
@@ -73,6 +74,7 @@ public class PictureManager : MonoBehaviour
         scroll.content.sizeDelta = new Vector2(location + 80, 300);
     }
 
+    // 내사진 이벤트 셋팅
     private async UniTask PictureSettingEvent(string url, int index, int location)
     {
         PrefabEvent pe = pictureList[index];
@@ -97,6 +99,7 @@ public class PictureManager : MonoBehaviour
         }
     }
 
+    // 내사진 가져오기
     public void GalleryImageLoadEvent()
     {
         NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
@@ -147,6 +150,7 @@ public class PictureManager : MonoBehaviour
         });
     }
 
+    // 이미지 읽기 -> 읽기/쓰기 변경
     private Texture2D ImageResettingEvent(Texture2D texture)
     {
         RenderTexture renderTexture = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.Default, RenderTextureReadWrite.Linear);

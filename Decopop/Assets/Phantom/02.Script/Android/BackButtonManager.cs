@@ -13,6 +13,7 @@ public class BackButtonManager : MonoBehaviour
     [SerializeField]
     private Canvas capture;
 
+    // Android Back Button ëª¨ë°”ì¼ ë‚˜ê°€ê¸°
     void Update()
     {
 #if UNITY_ANDROID
@@ -53,9 +54,10 @@ public class BackButtonManager : MonoBehaviour
 #endif
     }
 
+    // ë‚˜ê°€ê¸° 2ë²ˆì— í† ìŠ¤íŠ¸ íŒì—… í‘œì‹œ
     private void AndroidToastPopupEvent()
     {
-        string message = "'µÚ·Î'¹öÆ° ÇÑ¹ø´õ Å¬¸¯½Ã ¾ÛÀÌ Á¾·áµË´Ï´Ù.";
+        string message = "'ë’¤ë¡œ'ë²„íŠ¼ í•œë²ˆë” í´ë¦­ì‹œ ì•±ì´ ì¢…ë£Œë©ë‹ˆë‹¤.";
 
         AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");

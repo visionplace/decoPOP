@@ -72,6 +72,7 @@ public class CategoryManager : MonoBehaviour
         CategoryEvent().Forget();
     }
 
+    // 카테고리 불러오기
     private async UniTask CategoryEvent()
     {
         try
@@ -147,6 +148,7 @@ public class CategoryManager : MonoBehaviour
         }
     }
 
+    //카테고리 생성이벤트
     private void CategorySectorEvent(Category site)
     {
         int index = 0;
@@ -164,6 +166,7 @@ public class CategoryManager : MonoBehaviour
         }
     }
 
+    // 카테고리 생성
     private async UniTask CategoryInstantiateEvent(Category.Value value, int index, int location)
     {
         RectTransform obj = Instantiate(prefab, sector[0]);
@@ -190,6 +193,7 @@ public class CategoryManager : MonoBehaviour
         }
     }
 
+    // 캔버스 이벤트
     public void CanvasEvent(int selectNumber)
     {
         categoryCanvas.enabled = false;
@@ -211,6 +215,7 @@ public class CategoryManager : MonoBehaviour
         }
     }
 
+    // 카테고리 배너 생성
     private void CategoryBannerEvent(Banner banner)
     {
         int index = 0;
@@ -223,6 +228,7 @@ public class CategoryManager : MonoBehaviour
         }
     }
 
+    // 카테고리 배너 생성및 클릭 이벤트
     private async UniTask CategoryBannerEvent(Banner.Value value, int index, int location)
     {
         RectTransform obj = Instantiate(prefab, sector[2]);
@@ -247,12 +253,13 @@ public class CategoryManager : MonoBehaviour
         }
     }
 
+    // 상세보기 오픈
     private void OpenUrlEvent(string url)
     {
         if(string.IsNullOrEmpty(url))
         {
 #if UNITY_ANDROID
-            string message = "�̺�Ʈ �غ���...";
+            string message = "이벤트 준비중...";
             AndroidToestPopupEvent(message);
 #elif UNITY_IOS
 
@@ -264,6 +271,7 @@ public class CategoryManager : MonoBehaviour
         }
     }
 
+    // 안드로이드 토스트팝업
     private void AndroidToestPopupEvent(string message)
     {
         AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
@@ -280,6 +288,7 @@ public class CategoryManager : MonoBehaviour
         }
     }
 
+    // 서버 로그발생
     private async UniTask LogEvent(string code)
     {
         string member = PlayerPrefs.GetString("Member");

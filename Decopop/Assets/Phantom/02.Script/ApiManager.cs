@@ -63,6 +63,7 @@ public class ApiManager : MonoBehaviour
         ColorUtility.TryParseHtmlString("#FFFFFF", out secondColor);
     }
 
+    // 카테고리 및 제품정보 가져오기
     public void ApiEvent(int index, string code)
     {
         if(index == 1)
@@ -85,6 +86,7 @@ public class ApiManager : MonoBehaviour
         }     
     }
 
+    // 카테고리 불러오기
     private async UniTask CategoryEvent(string code)
     {
         categoryCode = code;
@@ -174,6 +176,7 @@ public class ApiManager : MonoBehaviour
         }
     }
 
+    // 카타게뢰 클릭시 발생할 이벤트
     private void CategorySettingEvent(Category.Value value, int index, int location)
     {
         PrefabEvent pe = categoryList[index];
@@ -191,6 +194,7 @@ public class ApiManager : MonoBehaviour
         });
     }
 
+    // 카테고리 클릭시 글자 및 배경색 변경
     private void CategoryUIEvent(int index)
     {
         categoryList[currentIndex].image.color = fristColor;
@@ -202,6 +206,7 @@ public class ApiManager : MonoBehaviour
         categoryList[currentIndex].text.color = fristColor;
     }
 
+    // 제품 정보가져오기
     private async UniTask ProductEvent(string code)
     {
         productCode = code;
@@ -288,6 +293,7 @@ public class ApiManager : MonoBehaviour
         }
     }
 
+    // 제품 클릭시 발생할 이벤트
     private async UniTask ProductSettingEvent(Product.Value value, int index, int location)
     {
         PrefabEvent pe = productList[index];
@@ -316,6 +322,7 @@ public class ApiManager : MonoBehaviour
         }
     }
 
+    // 상세보기 클릭시 발생시킬 이벤트
     private void URLCheckEvent(string url)
     {
         if(string.IsNullOrEmpty(url))
@@ -339,11 +346,13 @@ public class ApiManager : MonoBehaviour
         }
     }
 
+    // 상세보기 url 오픈
     public void OpenUrlEvent()
     {
         Application.OpenURL(currentUrl);
     }
 
+    // 카테고리 및 제품 클릭시 발생시킬 로그
     private async UniTask LogEvent(string code)
     {
         string member = PlayerPrefs.GetString("Member");

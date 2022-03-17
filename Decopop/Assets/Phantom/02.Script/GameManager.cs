@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // 프레임 및, 안드로이드 상태바 변경
     void Awake()
     {
         Application.targetFrameRate = 60;

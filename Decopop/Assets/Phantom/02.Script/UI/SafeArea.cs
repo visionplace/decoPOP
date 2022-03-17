@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SafeArea : MonoBehaviour
 {
+    // 이미지 SafeArea설정
     void Awake()
     {
         RectTransform rectTransform = GetComponent<RectTransform>();

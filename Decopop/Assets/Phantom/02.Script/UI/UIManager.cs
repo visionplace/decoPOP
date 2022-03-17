@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     private Vector2 startPos;
     private Vector2 endPos;
     
-
+    // 캔버스 끄기
     public void CloseCanvasEvent()
     {
         animationUI.DOSizeDelta(new Vector2(0, 100f), 0.3f, false).OnStart(() => 
@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
         animationEnable = false;
     }
 
+    // 캔버스 오픈
     public void OpenCanvasEvent()
     {
         animationUI.DOSizeDelta(new Vector2(0, 900f), 0.3f, false).OnComplete(() =>
@@ -87,6 +88,7 @@ public class UIManager : MonoBehaviour
         animationEnable = true;
     }
     
+    // 캔버스 터치
     public void OnBeginEvent()
     {
         startPos = Input.mousePosition;

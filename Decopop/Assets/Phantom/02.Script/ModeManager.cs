@@ -16,6 +16,7 @@ public class ModeManager : MonoBehaviour
     private GameObject wallPaper;
     private bool modeEnable = true;
 
+    // 모드변경
     public void ModeEvent()
     {
         if(modeEnable == true)

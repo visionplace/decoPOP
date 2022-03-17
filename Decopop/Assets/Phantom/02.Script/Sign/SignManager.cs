@@ -15,6 +15,8 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using UnityEngine.UI;
 
+
+// 서버 인증 구조체
 [Serializable]
 public struct User
 {
@@ -29,6 +31,8 @@ public struct User
     public string member;
 }
 
+
+// 서버인증 결과
 [Serializable]
 public struct Result
 {
@@ -57,6 +61,7 @@ public class SignManager : MonoBehaviour
 
     void Start()
     {
+        // 파이어베이스 체크 메세지 토큰가져오기
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
 
             var dependencyStatus = task.Result;
@@ -71,7 +76,9 @@ public class SignManager : MonoBehaviour
             }
         });
 
+        // 애플로그인
 #if UNITY_IOS
+
 
         if (AppleAuthManager.IsCurrentPlatformSupported)
         {
@@ -93,6 +100,7 @@ public class SignManager : MonoBehaviour
 
     }
 
+    // 애플로그인
 #if UNITY_IOS
 
     void Update()
@@ -105,6 +113,7 @@ public class SignManager : MonoBehaviour
 
 #endif
 
+    // 카카오 안드로이드, 애플로그인
     public void KakaoSignEvent()
     {
 #if UNITY_ANDROID
@@ -115,6 +124,7 @@ public class SignManager : MonoBehaviour
 #endif
     }
 
+    // 카카오 에러
     private void KakaoError(string error)
     {
 #if UNITY_ANDROID
@@ -123,6 +133,7 @@ public class SignManager : MonoBehaviour
 #endif
 
     }
+    
     
     private void KakaoToken(string token)
     {
@@ -163,6 +174,7 @@ public class SignManager : MonoBehaviour
  * [ iOS SignIn ]
  */
 
+    // 애플 로그인
     public void AppleSignInEvent()
     {
 #if UNITY_IOS
@@ -250,6 +262,7 @@ public class SignManager : MonoBehaviour
         return result;
     }
 
+    // 서버 인증
     private void SignEvent()
     {
         if(String.IsNullOrEmpty(user.token))
@@ -315,11 +328,14 @@ public class SignManager : MonoBehaviour
         }));
     }
 
+    // 스킵
     public void SkipEvent()
     {
         SceneManager.LoadScene("Main");
     }
 
+
+    // 로그인시 서버에 로그 기록남기기
     private IEnumerator LogEvent(string log)
     {
         string member = PlayerPrefs.GetString("Member");

@@ -30,6 +30,7 @@ public class ARManager : MonoBehaviour
         }
     }
 
+    // 증강움직이기게 하기
     void Update()
     {
         if(targetEnable == true)
@@ -52,6 +53,7 @@ public class ARManager : MonoBehaviour
         }
     }
 
+    // 증강 이벤트 발생 2d 3d 구분
     public void TargetEvent(string code, string dimension, string address)
     {
         if(targetCode == code)
@@ -86,6 +88,7 @@ public class ARManager : MonoBehaviour
         }
     }
 
+    //2D 증강
     private async UniTask TwoDimensionTargetEvent(string url)
     {
         if(loding.activeSelf == false)
@@ -146,6 +149,7 @@ public class ARManager : MonoBehaviour
 
     //}
 
+    // 증강제품 초기화
     public void TargetResetEvent()
     {
         if(target != null)
@@ -156,6 +160,7 @@ public class ARManager : MonoBehaviour
         }
     }
 
+    // 배경화면 증강
     public void WallPaperEvent()
     {
         if (loding.activeSelf == false)
@@ -209,6 +214,7 @@ public class ARManager : MonoBehaviour
         }
     }
 
+    // 읽기 전용 이미지를 읽기/쓰기 전용으로 변경
     private Texture2D ImageResettingEvent(Texture2D texture)
     {
         RenderTexture renderTexture = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.Default, RenderTextureReadWrite.Linear);
@@ -224,6 +230,7 @@ public class ARManager : MonoBehaviour
         return newTexture;
     }
 
+    // 이미지 크기 조절
     private Texture2D TextureResizeEvent(Texture2D source, int targetWidth, int targetHeight)
     {
         Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, true);
@@ -239,8 +246,7 @@ public class ARManager : MonoBehaviour
         return result;
     }
 
-
-
+    
     public void PlayTargetEvent(int number)
     {
         if(target != null)

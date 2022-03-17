@@ -8,6 +8,7 @@ public class LodingManager : MonoBehaviour
     private RectTransform circle;
     private float speed = 5;
 
+    // 로딩
     void Update()
     {
         Vector3 angle = circle.localEulerAngles;

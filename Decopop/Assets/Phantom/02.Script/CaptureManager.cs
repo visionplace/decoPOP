@@ -39,6 +39,7 @@ public class CaptureManager : MonoBehaviour
         }
     }
 
+    // 갤러리 오픈
     public void GalleryEvent()
     {
 #if UNITY_ANDROID
@@ -53,6 +54,7 @@ public class CaptureManager : MonoBehaviour
 #endif
     }
 
+    // 캡쳐 이벤트
     public void CaptureEvent()
     {
         StartCoroutine(Action());
@@ -102,6 +104,7 @@ public class CaptureManager : MonoBehaviour
         PreviewEvent();
     }
 
+    // 미리보기
     private void PreviewEvent()
     {
         if(texture != null)
@@ -117,11 +120,13 @@ public class CaptureManager : MonoBehaviour
         preview.SetActive(true);
     }
 
+    // 공유이벤트
     public void ShareEvent()
     {
         new NativeShare().AddFile(texture).SetTitle("[SignAR]").SetSubject("VisionPlace").SetText(texture.name).Share();
     }
 
+    // 뒤로가기 버튼
     public void BackButton()
     {
         DestroyImmediate(texture);
